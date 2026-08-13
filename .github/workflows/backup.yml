@@ -1,0 +1,14 @@
+name: Backup database
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+
+jobs:
+  backupDB:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone git
+        uses: actions/checkout@v7
+      
