@@ -23,3 +23,17 @@ jobs:
       - name: Test website
         run: curl --fail http://localhost:8000
         
+  deploy:
+    runs-on: self-hosted
+    needs: test
+    steps:
+      - name: create a folder
+        run: |
+          cd ~
+          pwd
+          mkdir sajid
+          cd sajid
+          touch hello.txt
+          echo "hello world" > hello.txt
+
+          
