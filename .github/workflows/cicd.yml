@@ -1,0 +1,25 @@
+name: CICD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest    
+    steps:
+      - name: git clone
+        uses: actions/checkout@v7
+       
+      - name: install python
+        uses: actions/setup-python@v7
+
+      - name: Start website in port 8000
+        run: |
+          python3 -m http.server 8000 &
+          sleep 2
+
+      - name: Test website
+        run: curl --fail http://localhost:8000
+        
